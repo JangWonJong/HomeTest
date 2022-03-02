@@ -2,7 +2,9 @@ import random
 def main():
     q8 = Quiz08Rps(int(input('가위바위보'))) # 가위 1 바위 2 보 3
     print(f'나의 값 : {q8.user} 컴퓨터의 값 : {q8.com} 결과 : {q8.game()}')
-
+    #user가 3일 때  값만 정상으로 나옴
+    #ㄴㄴ 정상적으로 나옴
+    #입력창(콘솔에 주느값은 String값이 아닌 Int값임 확인하셈
 
 def myRandom(start, end):
     return random.randint(start, end)
@@ -26,18 +28,18 @@ class Quiz08Rps(object):
         rps = ['가위', '바위', '보']
         if u == 1:
             if c == 1:
-                res = f'플레이어 : {rps[0]}, 컴퓨터 : {rps[0]}, 결과 패배'
+                res = f'플레이어 : {rps[0]}, 컴퓨터 : {rps[0]}, 결과 무승부'
             elif c == 2:
-                res = f'플레이어 : {rps[0]}, 컴퓨터 : {rps[1]}, 결과 승리'
+                res = f'플레이어 : {rps[0]}, 컴퓨터 : {rps[1]}, 결과 패배'
             elif c == 3:
-                res = f'플레이어 : {rps[0]}, 컴퓨터 : {rps[2]}, 결과 무승부'
+                res = f'플레이어 : {rps[0]}, 컴퓨터 : {rps[2]}, 결과 승리'
         if u == 2:
             if c == 1:
-                res = f'플레이어 : {rps[1]}, 컴퓨터 : {rps[0]}, 결과 패배'
+                res = f'플레이어 : {rps[1]}, 컴퓨터 : {rps[0]}, 결과 승리'
             elif c == 2:
-                res = f'플레이어 : {rps[1]}, 컴퓨터 : {rps[1]}, 결과 승리'
+                res = f'플레이어 : {rps[1]}, 컴퓨터 : {rps[1]}, 결과 무승부'
             elif c == 3:
-                res = f'플레이어 : {rps[1]}, 컴퓨터 : {rps[2]}, 결과 무승부'
+                res = f'플레이어 : {rps[1]}, 컴퓨터 : {rps[2]}, 결과 패배'
         if u == 3:
             if c == 1:
                 res = f'플레이어 : {rps[2]}, 컴퓨터 : {rps[0]}, 결과 패배'
@@ -46,7 +48,7 @@ class Quiz08Rps(object):
             elif c == 3:
                 res = f'플레이어 : {rps[2]}, 컴퓨터 : {rps[2]}, 결과 무승부'
 
-            return res
+        return res
 
 
 
