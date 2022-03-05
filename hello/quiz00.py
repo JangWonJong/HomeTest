@@ -66,6 +66,7 @@ class Quiz00:
             res = '평년'
 
         print(f'{year}년은 {res}입니다')
+        return None
 
     def quiz05grade(self)->float:
         m = members[myRandom(0,23)]
@@ -82,7 +83,14 @@ class Quiz00:
 
         print(f'{m}의 언어점수 : {kor} 영어점수 : {eng} 수학점수 : {math}\n'
               f'총점 : {total}\n평균 : {avg}\n합격여부 : {res}')
+        return None
 
     def quiz06memberChoice(self)->float:
         res = members[myRandom(0,23)]
         print(f'당첨된 학생은 {res}입니다')
+        return None
+
+    def quiz07lotto(self)->float:
+        l = myRandom(1,45)
+        for i in range(5):
+            print(i)
