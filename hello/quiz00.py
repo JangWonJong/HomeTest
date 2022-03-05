@@ -22,9 +22,9 @@ class Quiz00:
                         '심민혜', '권솔이', '김지혜', '하진희', '최은아',
                         '최민서', '한성수', '김윤섭', '김승현',
                         "강 민", "최건일", "유재혁", "김아름", "장원종"]
-        m = members[myMember(0,23)]
-        w = this.weight[myRandom(40,100)]
-        h = this.height[myRandom(140,200)]
+        m = members[myMember()]
+        w = myRandom(40,100)
+        h = myRandom(140,200)
         bmi = w / (h * h) * 10000
 
         if bmi >= 35:
@@ -45,4 +45,5 @@ class Quiz00:
 
 
     def quiz02dice(self)->int:
+        pass
 
