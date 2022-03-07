@@ -110,15 +110,25 @@ class Quiz00:
 
     def quiz09gugudan(self)->float:
 
-        for i in range(1,10): #2단~5단
-            for j in range(2,6):
-                print(f' {j} * {i} = {i*j}' ,end=" ")
+        print('구구단 출력')
+        for i in range(1, 6):  # 6단~9단
+            for j in range(2, 6):
+                print(f' {j} * {i} = {i * j}', end=" ")
             print(' ')
-        print('--------------------------------------')
-        for i in range(1,10): #6단~9단
-            for j in range(6,10):
-                print(f' {j} * {i} = {i*j}' ,end=" ")
+        print('------------------------------------------------')
+        for i in range(6, 10):  # 6단~9단
+            for j in range(6, 10):
+                print(f' {j} * {i} = {i * j}', end=" ")
             print(' ')
+
+        '''for i in [1,6]: #2단~5단
+            for j in range(1,10):
+                for k in range(2,6):
+                    print(f' {k} * {j} = {k*j}' ,end=" ")
+                print('')
+            print('------------')'''
+
+
 
 
         '''res = ''
@@ -191,9 +201,9 @@ class Account(object):
                print("".join([i.to_string() for i in ls]))
             elif menu == '3':
                 account_number = input('입금할 계좌번호')
-                deposit = input('입금액')
+                #deposit = input('입금액')
                 for i, j in enumerate(ls):
-                    pass
+                    print("".join([i.account_number for i in ls]))
 
                 #추가코드완성
             elif menu == '4':
