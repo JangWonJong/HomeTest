@@ -100,7 +100,6 @@ class Quiz00:
         return None
 
     def quiz07lotto(self)->float:
-
         for l in range(6):
             l = myRandom(1,45)
             print(f'당첨번호 : {l}')
@@ -110,10 +109,15 @@ class Quiz00:
         Account.main()
 
     def quiz09gugudan(self)->float:
-        for i in range(1,10):
-            for j in range(1,10):
-                print(f'{i}*{j} = {i*j}')
-            print(f'\n')
+        res = ''
+        for i in [2, 6]:
+            for j in range(1, 10):
+                for k in range(0, 4):
+                    res += f'{i + k} * {j} = {(i + k) * j}\t'
+                res += '\n'
+            res += '\n'
+
+        return print(res)
 
 
 
