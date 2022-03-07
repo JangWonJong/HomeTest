@@ -100,12 +100,25 @@ class Quiz00:
         return None
 
     def quiz07lotto(self)->float:
-        l = myRandom(1,45)
-        for i in range(5):
-            print(i)
+
+        for l in range(6):
+            l = myRandom(1,45)
+            print(f'당첨번호 : {l}')
+        return None
 
     def quiz08bank(self)->str:
-        Account().main()
+        Account.main()
+
+    def quiz09gugudan(self)->float:
+        for i in range(1,10):
+            for j in range(1,10):
+                print(f'{i}*{j} = {i*j}')
+            print(f'\n')
+
+
+
+
+
 '''
 은행이름은 비트은행
 입금자 이름(name), 계좌번호(account_number), 금액(money) 속성값으로 계좌를 생성한다. 
@@ -114,13 +127,13 @@ class Quiz00:
 이름 우리반 금액 랜덤
 '''
 class Account(object):
-    def __init__(self, name, account_numver, money):
+    def __init__(self, name, account_number, money):
         self.BANK_NAME = '비트은행'
         #self.name = Quiz00().quiz06memberChoice()
-        self.name = members[myRandom(0, 23)]
+        self.name = members[myRandom(0, 23)] if name == None else name
         #self.account_number= f'{myRandom(0,1000):0>3}-{myRandom(0,100):0>2}-{myRandom(0,1000000):0>6}'
-        self.account_number = self.creat_account_number()
-        self.money = myRandom(0, 10000000)
+        self.account_number = self.creat_account_number() if account_number == None else account_number
+        self.money = myRandom(0, 10000000) if money == None else money
 
     def to_string(self):
 
@@ -145,14 +158,15 @@ class Account(object):
             if j.account_number == account_number:
                 del ls[i]
 
-    def main(self):
+    @staticmethod
+    def main():
         ls = []
         while 1 :
             menu = input('0.종료 1. 계좌개설 2.계좌목록 3.입금 4.출금 5.계좌해지')
             if menu == '0':
                 break
             if menu == '1':
-                acc = Account()
+                acc = Account(None,None,None)
                 print(f'{acc.to_string()}...개설되었습니다.\n')
                 ls.append(acc)
             elif menu == '2':
@@ -163,7 +177,7 @@ class Account(object):
                 account_number = input('입금할 계좌번호')
                 deposit = input('입금액')
                 for i, j in enumerate(ls):
-                    if
+                    pass
 
                 #추가코드완성
             elif menu == '4':
