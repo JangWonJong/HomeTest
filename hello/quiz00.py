@@ -115,18 +115,30 @@ class Quiz00:
 class Account(object):
     def __init__(self):
         self.BANK_NAME = '비트은행'
+        #self.name = Quiz00().quiz06memberChoice()
         self.name = members[myRandom(0, 23)]
-        self.account_number= f'{myRandom(0,1000):0>3}-{myRandom(0,100):0>2}-{myRandom(0,1000000):0>6}'
+        #self.account_number= f'{myRandom(0,1000):0>3}-{myRandom(0,100):0>2}-{myRandom(0,1000000):0>6}'
+        self.account_number = self.creat_account_number()
         self.money = myRandom(0, 10000000)
 
     def to_string(self):
-        result = []
-        for i in range(3):
-            result.append(myRandom(0,9))
+
         return f'은행 : {self.BANK_NAME}, ' \
                f'입금자 : {self.name} ' \
                f'계좌번호 : {self.account_number} ' \
                f'금액 : {self.money}원'
                #f'계좌번호 : {account_number:0>3} - {account_number:0>2}{account_number:0>6}' \
+
+
+
+    def creat_account_number(self):
+       '''ls = [str(myRandom(0,10)) for i in range(3)]
+       ls.append("-")
+       ls += [str(myRandom(0,10)) for i in range(2)]
+       ls.append("-")
+       ls += [str(myRandom(0,10)) for i in range(6)]'''
+
+       #return "".join(['-' if i == 4 or i == 7 else str(myRandom(0,9)) for i in range(13)])
+       return "".join([str(myRandom(0,9)) if i == 4 or i == 7 else '-' for i in range(13)])
 
 
