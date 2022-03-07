@@ -110,10 +110,10 @@ class Quiz00:
 
     def quiz09gugudan(self)->float:
 
-        for i in range(2,10): #2단~9단
-            for j in range(1,10): #곱하기 부분
-                print(f'{i}*{j} = {i*j}')
-            print('\n')
+        for i in range(1,10): #2단~9단
+            for j in range(2,10): #곱하기 부분
+                print(f' {j} * {i} = {i*j}' ,end=" ") # 출력부분 i= 단 부분 j 는 숫자 부분
+            print(' ')
 
 
         '''res = ''
