@@ -109,15 +109,22 @@ class Quiz00:
         Account.main()
 
     def quiz09gugudan(self)->float:
-        res = ''
+
+        for i in range(2,10): #2단~9단
+            for j in range(1,10): #곱하기 부분
+                print(f'{i}*{j} = {i*j}')
+            print('\n')
+
+
+        '''res = ''
         for i in [2, 6]:
             for j in range(1, 10):
                 for k in range(0, 4):
                     res += f'{i + k} * {j} = {(i + k) * j}\t'
                 res += '\n'
-            res += '\n'
+            res += '\n' '''
 
-        return print(res)
+        #return print(res)
 
 
 
