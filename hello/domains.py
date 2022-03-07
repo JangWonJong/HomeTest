@@ -26,8 +26,9 @@ class Member:
     @weight.setter
     def weight(self, weight): self._weight = weight
 
-def myRandom(start, end): return random.randint(start, end)
+def myRandom(start, end): return random.randint(start, end-1)
 def my100(): return myRandom(1,100)
+
 members = ['홍정명', '노홍주', '전종현', '정경준', '양정오',
            '권혜민', '서성민', '조현국', '김한슬', '김진영',
            '심민혜', '권솔이', '김지혜', '하진희', '최은아',
