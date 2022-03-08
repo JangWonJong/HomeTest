@@ -79,8 +79,17 @@ class Quiz20:
         url = 'https://www.melon.com/chart/index.htm?dayTime=2022030816'
         req = urllib.request.Request(url, headers=headers)
         soup = BeautifulSoup(urlopen(req).read(), 'lxml')#실시간차트 제목 출력하기
+        #print(''.join([i.get_text() for i in soup.find_all('div',{'class':'ellipsis rank01'})[0:3]]))#세로출력
+        print([i.get_text().strip() for i in soup.find_all('div', {'class': 'ellipsis rank01'})[0:3]])#가로출력(공백은 있음)
 
-        return None
+        '''a = soup.find_all('div',{'class':'ellipsis rank02'})
+        a = [i.get_text() for i in a]
+        print(''.join(i for i in a))'''
+
+        '''a = soup.find_all('div',class_='ellipsis rank02')
+        for i in a :
+            print(i.get_text())'''
+
 
     def quiz28(self) -> str: return None
 
