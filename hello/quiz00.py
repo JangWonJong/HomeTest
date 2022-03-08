@@ -111,15 +111,15 @@ class Quiz00:
     def quiz09gugudan(self)->float:
 
         print('구구단 출력')
-        for i in range(1, 6):  # 6단~9단
+        for i in range(1, 10):  # 6단~9단
             for j in range(2, 6):
                 print(f' {j} * {i} = {i * j}', end=" ")
-            print(' ')
+            print()
         print('------------------------------------------------')
-        for i in range(6, 10):  # 6단~9단
+        for i in range(1, 10):  # 6단~9단
             for j in range(6, 10):
                 print(f' {j} * {i} = {i * j}', end=" ")
-            print(' ')
+            print('')
 
         '''for i in [1,6]: #2단~5단
             for j in range(1,10):

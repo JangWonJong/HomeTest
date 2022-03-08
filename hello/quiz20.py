@@ -72,6 +72,7 @@ class Quiz20:
 
     def quiz25dictcom(self) -> str: return None
 
+
     def quiz26map(self) -> str: return None
 
     def quiz27melon(self) -> str:
