@@ -185,8 +185,20 @@ class Account(object):
         #return "".join([j.to_string() if j.account_number == account_number else '' for i,j in enumerate(ls)])
         for i, j in enumerate(ls):
             if j.account_number == account_number:
-                return ls[i].money
+                return ls[i].to_string()
 
+    @staticmethod
+    def add_account(ls, account_number):
+        # return "".join([j.to_string() if j.account_number == account_number else '' for i,j in enumerate(ls)])
+        for i, j in enumerate(ls):
+            if j.account_number == account_number:
+                return ls[i].money
+    @staticmethod
+    def min_account(ls, account_number):
+        # return "".join([j.to_string() if j.account_number == account_number else '' for i,j in enumerate(ls)])
+        for i, j in enumerate(ls):
+            if j.account_number == account_number:
+                return ls[i].money
     @staticmethod
     def del_account(ls, account_number):
         for i, j in enumerate(ls):
@@ -209,11 +221,10 @@ class Account(object):
                #print("".join([acc.to_string() for acc in ls]))
                print("".join([i.to_string() for i in ls]))
             elif menu == '3':
-                find = Account(None,None,None)
-                print(find.find_account(ls,input('입금할 계좌번호')) + int(input('입금액')))
+                print(Account.add_account(ls,input('입금할 계좌번호')) + int(input('입금액')))
 
             elif menu == '4':
-
+                print(Account.min_account()(ls, input('입금할 계좌번호')) - int(input('출금액')))
                 '''account_number = input('입금할 계좌번호')
                 mon = int(input('출금액'))
                 print(Account.find_account(ls,input('입금할 계좌번호')) - int(input('출금액')))'''
