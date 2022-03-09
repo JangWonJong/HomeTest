@@ -224,7 +224,7 @@ class Account(object):
                 print(Account.add_account(ls,input('입금할 계좌번호')) + int(input('입금액')))
 
             elif menu == '4':
-                print(Account.min_account()(ls, input('입금할 계좌번호')) - int(input('출금액')))
+                print(Account.min_account(ls, input('입금할 계좌번호')) - int(input('출금액')))
                 '''account_number = input('입금할 계좌번호')
                 mon = int(input('출금액'))
                 print(Account.find_account(ls,input('입금할 계좌번호')) - int(input('출금액')))'''
