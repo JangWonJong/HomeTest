@@ -135,6 +135,8 @@ class Quiz20:
         dict = self.quiz24zip()
         df = pd.DataFrame.from_dict(dict, orient='index')
         print(df)
+        df.to_csv('./save/bugs.csv', sep=',', na_rep='NaN')
+
 
 
     def quiz29(self) -> str: return None
