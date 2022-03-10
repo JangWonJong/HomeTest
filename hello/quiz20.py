@@ -55,22 +55,40 @@ class Quiz20:
         print(a2)
         return None
 
-    def quiz24zip(self) -> str:
+
+    def quiz24zip(self)->str:
         url = 'https://music.bugs.co.kr/chart/track/realtime/total'
         html_doc = urlopen(url)
         soup = BeautifulSoup(html_doc, 'lxml') # html.parser vs lxml
         #print(soup.prettify())
-        a = soup.find_all('p', {'class':"artist"})
-        a = [i.get_text() for i in a]
-        print(''.join(i for i in a))
+        ''' artists = soup.find_all('p', {'class':'artist'})
+        artists = [i.get_text() for i in artists]
+        #print(''.join(i for i in artists))
+        titles = soup.find_all('p', {'class': {'titles'}})
+        titles = [i.get_text() for i in titles]'''
+        #print(''.join(i for i in titles))
         #print(type(a)) #<class 'bs4.element.ResultSet'>
-
-
         '''for i in a:
             print(i.get_text())'''
 
+        for i,j in enumerate(['artist','title']):
+            a = [i for i in self.bugs(soup,j)]
+            print('\n\n\n'.join(i for i in a))
+            print('*'*100)
 
-    def quiz25dictcom(self) -> str: return None
+            ''' self.bugs(soup,'artist')
+             self.bugs(soup,'title')'''
+
+    @staticmethod
+    def bugs(soup,a):
+        a = soup.find_all('p', {'class': a})
+        a = [i.get_text() for i in a]
+        #print(''.join(a for a in a))
+        return a
+
+
+    def quiz25dictcom(self) -> str:
+        return None
 
 
     def quiz26map(self) -> str: return None
@@ -92,7 +110,10 @@ class Quiz20:
             print(i.get_text())'''
 
 
-    def quiz28(self) -> str: return None
+    def quiz28(self) -> str:
+
+
+        return None
 
     def quiz29(self) -> str: return None
 

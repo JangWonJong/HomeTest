@@ -159,8 +159,9 @@ class Account(object):
         self.account_number = self.creat_account_number() if account_number == None else account_number
         self.money = myRandom(0, 10000000) if money == None else money
 
-    def to_string(self):
 
+
+    def to_string(self):
         return f'은행 : {self.BANK_NAME}\n' \
                f'입금자 : {self.name}\n' \
                f'계좌번호 : {self.account_number}\n' \
