@@ -1,9 +1,8 @@
 import random
 import urllib.request
 from urllib.request import urlopen
-
 from bs4 import BeautifulSoup
-
+import pandas as pd
 
 class Quiz20:
 
@@ -56,35 +55,57 @@ class Quiz20:
         return None
 
 
-    def quiz24zip(self)->str:
+    def quiz24zip(self)->{}:
         url = 'https://music.bugs.co.kr/chart/track/realtime/total'
         html_doc = urlopen(url)
         soup = BeautifulSoup(html_doc, 'lxml') # html.parser vs lxml
-        #print(soup.prettify())
-        ''' artists = soup.find_all('p', {'class':'artist'})
-        artists = [i.get_text() for i in artists]
-        #print(''.join(i for i in artists))
-        titles = soup.find_all('p', {'class': {'titles'}})
-        titles = [i.get_text() for i in titles]'''
-        #print(''.join(i for i in titles))
-        #print(type(a)) #<class 'bs4.element.ResultSet'>
-        '''for i in a:
-            print(i.get_text())'''
+        ls1 = self.find_music(soup, 'title')
+        ls2 = self.find_music(soup, 'artist')
+        dict ={}
+        #self.dict1(ls1,ls2)
+        #self.dict2(ls1,ls2)
+        for i,j in zip(ls1,ls2):
+            dict[i] = j
+        print(dict)
+        return dict
 
+
+
+    @staticmethod
+    def dict1(ls1,ls2) -> None:
+        dict = {}
+        for i in range(0, len(ls1)):
+            dict [ls1[i]] = ls2[i]
+        print(dict)
+
+    @staticmethod
+    def dict2(ls1, ls2):
+        dict = {}
+        for i, j in enumerate(ls1):
+            dict[j] = ls2[i]
+        print(dict)
+
+    def print_music_list(self, soup)->None:
+        artists = soup.find_all('p', {'class': 'artist'})
+        artists = [i.get_text() for i in artists]
+        # print(''.join(i for i in artists))
+        titles = soup.find_all('p', {'class': {'titles'}})
+        titles = [i.get_text() for i in titles]
+        # print(''.join(i for i in titles))
+
+    def find_rank(self,soup):
         for i,j in enumerate(['artist','title']):
-            a = [i for i in self.bugs(soup,j)]
-            print('\n\n\n'.join(i for i in a))
+            for i,j in enumerate(self.find_music(soup,j)):
+                print(f'{i}위 : {j}')
             print('*'*100)
 
             ''' self.bugs(soup,'artist')
              self.bugs(soup,'title')'''
 
     @staticmethod
-    def bugs(soup,a):
-        a = soup.find_all('p', {'class': a})
-        a = [i.get_text() for i in a]
-        #print(''.join(a for a in a))
-        return a
+    def find_music(soup,class_nm)->[]:
+        ls = soup.find_all('p', {'class': class_nm})
+        return [i.get_text() for i in ls]
 
 
     def quiz25dictcom(self) -> str:
@@ -110,10 +131,11 @@ class Quiz20:
             print(i.get_text())'''
 
 
-    def quiz28(self) -> str:
+    def quiz28dataframe(self) -> None:
+        dict = self.quiz24zip()
+        df = pd.DataFrame.from_dict(dict, orient='index')
+        print(df)
 
-
-        return None
 
     def quiz29(self) -> str: return None
 
