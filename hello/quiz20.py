@@ -136,7 +136,7 @@ class Quiz20:
         while len(abc) != 5:
             abc.add(q.quiz06member_choice())
         print(f'{abc}')
-        
+
         scores = [my100() for i in range(5)]
 
 
