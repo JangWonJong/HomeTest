@@ -1,5 +1,6 @@
 import random
 import urllib.request
+from string import ascii_lowercase
 from urllib.request import urlopen
 from bs4 import BeautifulSoup
 import pandas as pd
@@ -130,16 +131,13 @@ class Quiz20:
         #students = [Quiz00.quiz06memberChoice() for i in random.sample(members,5)]
         #scores = [my100() for i in range(5)]
         q = Quiz00
-        students = [q.quiz06member_choice() for i in range(5)]
-        print(f'students : {str(students)}')
-        abc = set(students)
+        abc = set([q.quiz06member_choice() for i in range(5)])
         while len(abc) != 5:
             abc.add(q.quiz06member_choice())
-        print(f'{abc}')
-
+        students = list(abc)
         scores = [my100() for i in range(5)]
-
-
+        d = {i:j for i,j in zip(students,scores)}
+        print(d)
         #print(students2)
         #d1 = dict(zip(students,scores))
         #print(d1)
@@ -166,13 +164,34 @@ class Quiz20:
 
 
     def quiz28dataframe(self) -> None:
-        dict = self.quiz24zip()
-        df = pd.DataFrame.from_dict(dict, orient='index')
+        df = self.quiz24zip()
+        df = pd.DataFrame.from_dict(df, orient='index')
         print(df)
         df.to_csv('./save/bugs.csv', sep=',', na_rep='NaN')
 
 
+    '''
+    다음결과 출력
+        a   b   c
+    1   1   3   5
+    2   2   4   6      
+    '''
 
-    def quiz29(self) -> str: return None
+    def quiz29_pandas_df(self) -> object:
+        #d1 = {'a':[1,2], 'b':[3,4], 'c':[5,6]}
+        #df = pd.DataFrame(d1)
+        #df.index = [i for i in range(1,3)]
+        d2 = {'1':[i for i in range(1,10,2)], '2':[i for i in range(2,11,2)]}
+        alphabet_list = list(ascii_lowercase)
+        c = ['a', 'b', 'c', 'd', 'e']
+        d3 = {'1': [i if i%2==0 else '' for i in range(1,26)]}
+        print(d3)
+        d4 = {'2': [i if i%2==1 else '' for i in range(2,26)]}
+        print(d4)
+        df2 = pd.DataFrame.from_dict(d2, orient='index', columns=c)
+        print(df2)
+
+
+        return None
 
 
