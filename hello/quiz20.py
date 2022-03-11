@@ -181,15 +181,24 @@ class Quiz20:
         #d1 = {'a':[1,2], 'b':[3,4], 'c':[5,6]}
         #df = pd.DataFrame(d1)
         #df.index = [i for i in range(1,3)]
-        d2 = {'1':[i for i in range(1,10,2)], '2':[i for i in range(2,11,2)]}
-        alphabet_list = list(ascii_lowercase)
-        c = ['a', 'b', 'c', 'd', 'e']
-        d3 = {'1': [i if i%2==0 else '' for i in range(1,26)]}
-        print(d3)
-        d4 = {'2': [i if i%2==1 else '' for i in range(2,26)]}
-        print(d4)
-        df2 = pd.DataFrame.from_dict(d2, orient='index', columns=c)
-        print(df2)
+        #alphabet_list = list(ascii_lowercase)
+        #d2 = {'1':[i for i in range(1,10,2)], '2':[i for i in range(2,11,2)]}
+        '''d3 = {'1': [i if i%2==0 else '' for i in range(1,10)]}
+        d5 = list(d3)
+        d4 = {'2': [i if i%2==1 else '' for i in range(2,10)]}
+        d6 = list(d4)'''
+        l1 = []
+        l2 = []
+        c = [chr(i) for i in range(97, 100)]  # ['a', 'b', 'c']
+        e = [i if i ==0 else i for i in range(1,7)]
+        [l1.append(i) if i % 2 == 0 else l2.append(i) for i in e]
+        dict = {'1': l2, '2': l1}
+        df3 = pd.DataFrame.from_dict(dict, orient='index', columns=c)
+        print(df3)
+
+
+        #df2 = pd.DataFrame.from_dict(d2, orient='index', columns=c)
+        #print(df2)
 
 
         return None
