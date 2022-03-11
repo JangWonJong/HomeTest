@@ -11,15 +11,22 @@ class Quiz30:
                 4  10  11  12
         '''
     def quiz30_df_4_by_3(self) -> str:
-        df = pd.DataFrame([[1,2,3],
-                          [4, 5, 6],
-                          [7, 8, 9],
-                          [10,11,12]], index=range(1,5), columns=['A','B','C'])
 
-        list1 =[1,2,3]
-        list2 =[4,5,6]
-        list3 =[7,8,9]
-        list4 =[10,11,12]
+        # df = pd.DataFrame([[1,2,3],
+        #                   [4, 5, 6],
+        #                   [7, 8, 9],
+        #                   [10,11,12]], index=range(1,5), columns=['A','B','C'])
+        #
+        # d1 = {'1':[1,2,3], '2':[4,5,6], '3':[7,8,9], '4':[10,11,12]}
+        # df = pd.DataFrame(d1)
+        # df.index = [i for i in range(1,5)]
+        # ic(df)
+
+        val = [[1, 2, 3], [4, 5, 6], [7, 8, 9], [10, 11, 12]]
+        idx = range(1, 5)
+        col = ['A', 'B', 'C']
+        df = pd.DataFrame(val, index=idx, columns=col)
+        ic(df)
 
         # 위 식을 리스트결합 형태로 분해해서 조립하시오
         #ic(df)
@@ -34,6 +41,10 @@ class Quiz30:
                     1  56  83  80
         '''
     def  quiz31_rand_2_by_3(self) -> str:
+        val = []
+        idx = []
+        col = []
+        df = pd.DataFrame(val, index=idx, columns=col)
 
         return None
 
@@ -55,6 +66,10 @@ class Quiz30:
                            GOJKU  62  17  75  49
        '''
     def quiz32_df_grade(self) -> str:
+        val = []
+        idx = []
+        col = []
+        df = pd.DataFrame(val, index=idx, columns=col)
 
         return None
 

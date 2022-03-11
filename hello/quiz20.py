@@ -178,7 +178,7 @@ class Quiz20:
     '''
 
     def quiz29_pandas_df(self) -> object:
-        #d1 = {'a':[1,2], 'b':[3,4], 'c':[5,6]}
+        #d1 = {'1':[1,3,5], '2':[2,4,6]}
         #df = pd.DataFrame(d1)
         #df.index = [i for i in range(1,3)]
         #alphabet_list = list(ascii_lowercase)
@@ -190,8 +190,8 @@ class Quiz20:
         l1 = []
         l2 = []
         c = [chr(i) for i in range(97, 100)]  # ['a', 'b', 'c']
-        e = [i if i ==0 else i for i in range(1,7)]
-        [l1.append(i) if i % 2 == 0 else l2.append(i) for i in e]
+        #e = [i if i ==0 else i for i in range(1,7)]
+        [l1.append(i) if i % 2 == 0 else l2.append(i) for i in range(1,7)]
         dict = {'1': l2, '2': l1}
         df3 = pd.DataFrame.from_dict(dict, orient='index', columns=c)
         print(df3)
