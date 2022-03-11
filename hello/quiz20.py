@@ -61,13 +61,11 @@ class Quiz20:
         soup = BeautifulSoup(html_doc, 'lxml') # html.parser vs lxml
         ls1 = self.find_music(soup, 'title')
         ls2 = self.find_music(soup, 'artist')
-        dict ={}
+        dt = {i:j for i,j in zip(ls1,ls2)}
+        print(dt)
         #self.dict1(ls1,ls2)
         #self.dict2(ls1,ls2)
-        for i,j in zip(ls1,ls2):
-            dict[i] = j
-        print(dict)
-        return dict
+        #self.dict3(ls1, ls2)
 
 
 
@@ -84,6 +82,14 @@ class Quiz20:
         for i, j in enumerate(ls1):
             dict[j] = ls2[i]
         print(dict)
+
+    @staticmethod
+    def dict3(ls1,ls2):
+        dict = {}
+        for i,j in zip(ls1,ls2):
+            dict[i] = j
+        print(dict)
+
 
     def print_music_list(self, soup)->None:
         artists = soup.find_all('p', {'class': 'artist'})
