@@ -22,7 +22,7 @@ if __name__ == '__main__':
         elif menu == '3': q0.quiz03rps()
         elif menu == '4': q0.quiz04leap()
         elif menu == '5': q0.quiz05grade()
-        elif menu == '6': q0.quiz06memberChoice()
+        elif menu == '6': q0.quiz06member_choice()
         elif menu == '7': q0.quiz07lotto()
         elif menu == '8': q0.quiz08bank()
         elif menu == '9': q0.quiz09gugudan()

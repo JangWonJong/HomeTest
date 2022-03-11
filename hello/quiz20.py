@@ -3,6 +3,10 @@ import urllib.request
 from urllib.request import urlopen
 from bs4 import BeautifulSoup
 import pandas as pd
+from domains import my100,myRandom,members
+from quiz00 import Quiz00
+
+
 
 class Quiz20:
 
@@ -66,8 +70,14 @@ class Quiz20:
         #self.dict1(ls1,ls2)
         #self.dict2(ls1,ls2)
         #self.dict3(ls1, ls2)
-
-
+        #컴프리헨션 부분 적어놓은 것
+        a = [i if i ==0 or i ==0 else i for i in range(10)]
+        b = [i if i ==0 or i ==0 else i for i in []]
+        c = [(i,j) for i,j in enumerate([])]
+        d = {i:j for i,j in zip(ls1,ls2)}
+        l = [i + j for i,j in zip(ls1,ls2)]
+        l2 = list[zip(ls1,ls2)]
+        d1 = dict(zip(ls1,ls2))
 
     @staticmethod
     def dict1(ls1,ls2) -> None:
@@ -114,8 +124,26 @@ class Quiz20:
         return [i.get_text() for i in ls]
 
 
-    def quiz25dictcom(self) -> str:
-        return None
+    def quiz25dictcom(self)->str:
+        #quiz06memberChoic() 를 import 해서 문제해결 여기서 5명 추출
+        #students = [members[myRandom(0,23)]]
+        #students = [Quiz00.quiz06memberChoice() for i in random.sample(members,5)]
+        #scores = [my100() for i in range(5)]
+        q = Quiz00
+        students = [q.quiz06member_choice() for i in range(5)]
+        print(f'students : {str(students)}')
+        abc = set(students)
+        while len(abc) != 5:
+            abc.add(q.quiz06member_choice())
+        print(f'{abc}')
+        
+        scores = [my100() for i in range(5)]
+
+
+        #print(students2)
+        #d1 = dict(zip(students,scores))
+        #print(d1)
+
 
 
     def quiz26map(self) -> str: return None

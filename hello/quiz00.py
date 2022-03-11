@@ -1,3 +1,5 @@
+import random
+
 from domains import Member
 from domains import my100, myRandom, members
 
@@ -94,15 +96,14 @@ class Quiz00:
               f'총점 : {total}\n평균 : {avg}\n합격여부 : {res}')
         return None
 
-    def quiz06memberChoice(self)->float:
-        res = members[myRandom(0,23)]
-        print(f'당첨된 학생은 {res}입니다')
-        return None
+    @staticmethod
+    def quiz06member_choice()->float:
+        return members[myRandom(0,23)]
+
+
 
     def quiz07lotto(self)->float:
-        for l in range(6):
-            l = myRandom(1,45)
-            print(f'당첨번호 : {l}')
+        print(random.sample(range(1,46),6))
         return None
 
     def quiz08bank(self)->str:
