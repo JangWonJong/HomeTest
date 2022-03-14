@@ -123,43 +123,46 @@ class Quiz30:
     def quiz33_df_loc(self) -> str:
         '''d = [{'a':1, 'b':2,'c':3,'d':4},{'a':100, 'b':200,'c':300,'d':400},{'a':1000, 'b':2000,'c':3000,'d':4000}]'''
         '''df = self.createDf(keys=['a','b','c','d'],
-                           vals=np.random.randint(0,100,4),
-                           len=3)'''
-        #ic(df)
+                           vals=4,
+                           len=3)
+        ic(df)'''
+
         #https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.loc.html
         #grade.csv
-        model = Model()
+        '''model = Model()
         grade_df = model.new_model('grade.csv')
-        ic(grade_df)
+        ic(grade_df)'''
 
         '''score = np.random.randint(0,100,(4,3))
         sub = ['a','b','c','d']
         a = [{i:j for i,j in zip(sub,score) for _ in range(3)}]
         b = dict(zip(sub,score))
         c = [i for i in range(3)]
-        #print(a)
-        #df = pd.DataFrame([dict(zip(sub,score)) for _ in range(3)])
-        #ic(df)
+        print(a)
+        df7 = pd.DataFrame([dict(zip(sub,score)) for _ in range(3)])
+        ic(df7)'''
 
+        '''
         d = dict(zip(sub, score))
         df = pd.DataFrame(d)
         ic(df)
         '''
         subj = ['Java', 'Python', 'JS', 'SQL']
         stud = memberlist()
-        scores = np.random.randint(0,100,(24,4))
-        #d = dict(zip(subj,scores))
+        scores = np.random.randint(0,100,(len(stud),len(subj)))
         df1 = pd.DataFrame(scores,index=stud,columns=subj)
-        #df2 = pd.DataFrame.from_dict(d,orient=stud,columns=subj)
         ic(df1)
         df1.to_csv('./save/scores.csv', sep=',', na_rep='NaN')
 
+        d = dict(zip(stud,scores))
+        df2 = pd.DataFrame.from_dict(d,orient='index',columns=subj)
+        ic(df2)
         return None
 
 
     @staticmethod
     def createDf(keys, vals, len):
-        return pd.DataFrame([dict(zip(keys,vals))for _ in range(len)])
+        return pd.DataFrame([dict(zip(keys,np.random.randint(0,100, vals)))for _ in range(len)])
 
 
 
