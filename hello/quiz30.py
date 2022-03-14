@@ -4,8 +4,8 @@ import string
 import numpy as np
 import pandas as pd
 from icecream import ic
-
 from domains import myRandom, members, my100, memberlist
+from titanic.models import Model
 
 
 class Quiz30:
@@ -126,8 +126,11 @@ class Quiz30:
                            vals=np.random.randint(0,100,4),
                            len=3)'''
         #ic(df)
-        #ic(df.iloc[0])
-
+        #https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.loc.html
+        #grade.csv
+        model = Model()
+        grade_df = model.new_model('grade.csv')
+        ic(grade_df)
 
         '''score = np.random.randint(0,100,(4,3))
         sub = ['a','b','c','d']
@@ -147,6 +150,7 @@ class Quiz30:
         scores = np.random.randint(0,100,(24,4))
         #d = dict(zip(subj,scores))
         df1 = pd.DataFrame(scores,index=stud,columns=subj)
+        #df2 = pd.DataFrame.from_dict(d,orient=stud,columns=subj)
         ic(df1)
         df1.to_csv('./save/scores.csv', sep=',', na_rep='NaN')
 
@@ -161,6 +165,7 @@ class Quiz30:
 
 
     def quiz34(self) -> str:
+        # ic(df.iloc[0])
         '''출력했을 때 결과
                 ic| df.iloc[0]: a    36
                                 b    82
