@@ -126,7 +126,74 @@ class Quiz30:
                            vals=np.random.randint(0,100,4),
                            len=3)
         #ic(df)
-        ic(df.iloc[0])
+        #ic(df.iloc[0])
+        '''출력했을 때 결과
+        ic| df.iloc[0]: a    36
+                b    82
+                c    70
+                d     2
+                Name: 0, dtype: int32
+        '''
+        #ic(df.iloc[[0]])
+        '''출력했을 때 결과
+        ic| df.iloc[[0]]:     a   b   c   d
+                           0  71  42  91  11
+        '''
+        #ic(df.iloc[[0,1]])
+        '''출력했을 때 결과
+        ic| df.iloc[[0,1]]:     a   b   c  d
+                             0  73  66  17  5
+                             1  73  66  17  5
+        '''
+        #ic(df.iloc[:3])
+        '''출력했을 때 결과
+        ic| df.iloc[:3]:     a   b  c   d
+                          0  20  77  0  14
+                          1  20  77  0  14
+                          2  20  77  0  14
+        '''
+        #ic(df.iloc[[True,False,True]])
+        '''출력했을 때 결과
+        ic| df.iloc[[True,False,True]]:    a   b   c   d
+                                        0  0  66  58  31
+                                        2  0  66  58  31
+        '''
+        #ic(df.iloc[lambda x: x.index % 2 == 0])
+        '''출력했을 때 결과
+        ic| df.iloc[lambda x: x.index % 2 == 0]:    a  b   c   d
+                                                 0  3  7  84  30
+                                                 2  3  7  84  30
+        '''
+        #ic(df.iloc[0, 1])
+        '''출력했을 때 결과
+        ic| df.iloc[0, 1]: 35
+        '''
+        #ic(df.iloc[[0, 2], [1, 3]])
+        '''출력했을 때 결과
+        ic| df.iloc[[0, 2], [1, 3]]:     b   d
+                                     0  27  19
+                                     2  27  19
+        '''
+        #ic(df.iloc[1:3, 0:3])
+        '''출력했을 때 결과
+        ic| df.iloc[1:3, 0:3]:     a   b   c
+                                1  60  91  19
+                                2  60  91  19
+        '''
+        #ic(df.iloc[:, [True, False, True, False]])
+        '''출력했을 때 결과
+        ic| df.iloc[:, [True, False, True, False]]:     a   c
+                                                    0  60  19
+                                                    1  60  19
+                                                    2  60  19
+        '''
+        #ic(df.iloc[:, lambda df: [0, 2]])
+        '''출력했을 때 결과
+        ic| df.iloc[:, lambda df: [0, 2]]:     a   c
+                                            0  60  19
+                                            1  60  19
+                                            2  60  19
+        '''
 
         '''score = np.random.randint(0,100,(4,3))
         sub = ['a','b','c','d']
@@ -140,7 +207,8 @@ class Quiz30:
         d = dict(zip(sub, score))
         df = pd.DataFrame(d)
         ic(df)
-        #d = {i:j for i,j in zip(a,score)}'''
+        '''
+
         return None
 
 
