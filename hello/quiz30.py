@@ -5,7 +5,7 @@ import numpy as np
 import pandas as pd
 from icecream import ic
 
-from domains import myRandom, members, my100
+from domains import myRandom, members, my100, memberlist
 
 
 class Quiz30:
@@ -122,78 +122,12 @@ class Quiz30:
 
     def quiz33_df_loc(self) -> str:
         '''d = [{'a':1, 'b':2,'c':3,'d':4},{'a':100, 'b':200,'c':300,'d':400},{'a':1000, 'b':2000,'c':3000,'d':4000}]'''
-        df = self.createDf(keys=['a','b','c','d'],
+        '''df = self.createDf(keys=['a','b','c','d'],
                            vals=np.random.randint(0,100,4),
-                           len=3)
+                           len=3)'''
         #ic(df)
         #ic(df.iloc[0])
-        '''출력했을 때 결과
-        ic| df.iloc[0]: a    36
-                b    82
-                c    70
-                d     2
-                Name: 0, dtype: int32
-        '''
-        #ic(df.iloc[[0]])
-        '''출력했을 때 결과
-        ic| df.iloc[[0]]:     a   b   c   d
-                           0  71  42  91  11
-        '''
-        #ic(df.iloc[[0,1]])
-        '''출력했을 때 결과
-        ic| df.iloc[[0,1]]:     a   b   c  d
-                             0  73  66  17  5
-                             1  73  66  17  5
-        '''
-        #ic(df.iloc[:3])
-        '''출력했을 때 결과
-        ic| df.iloc[:3]:     a   b  c   d
-                          0  20  77  0  14
-                          1  20  77  0  14
-                          2  20  77  0  14
-        '''
-        #ic(df.iloc[[True,False,True]])
-        '''출력했을 때 결과
-        ic| df.iloc[[True,False,True]]:    a   b   c   d
-                                        0  0  66  58  31
-                                        2  0  66  58  31
-        '''
-        #ic(df.iloc[lambda x: x.index % 2 == 0])
-        '''출력했을 때 결과
-        ic| df.iloc[lambda x: x.index % 2 == 0]:    a  b   c   d
-                                                 0  3  7  84  30
-                                                 2  3  7  84  30
-        '''
-        #ic(df.iloc[0, 1])
-        '''출력했을 때 결과
-        ic| df.iloc[0, 1]: 35
-        '''
-        #ic(df.iloc[[0, 2], [1, 3]])
-        '''출력했을 때 결과
-        ic| df.iloc[[0, 2], [1, 3]]:     b   d
-                                     0  27  19
-                                     2  27  19
-        '''
-        #ic(df.iloc[1:3, 0:3])
-        '''출력했을 때 결과
-        ic| df.iloc[1:3, 0:3]:     a   b   c
-                                1  60  91  19
-                                2  60  91  19
-        '''
-        #ic(df.iloc[:, [True, False, True, False]])
-        '''출력했을 때 결과
-        ic| df.iloc[:, [True, False, True, False]]:     a   c
-                                                    0  60  19
-                                                    1  60  19
-                                                    2  60  19
-        '''
-        #ic(df.iloc[:, lambda df: [0, 2]])
-        '''출력했을 때 결과
-        ic| df.iloc[:, lambda df: [0, 2]]:     a   c
-                                            0  60  19
-                                            1  60  19
-                                            2  60  19
-        '''
+
 
         '''score = np.random.randint(0,100,(4,3))
         sub = ['a','b','c','d']
@@ -208,6 +142,13 @@ class Quiz30:
         df = pd.DataFrame(d)
         ic(df)
         '''
+        subj = ['Java', 'Python', 'JS', 'SQL']
+        stud = memberlist()
+        scores = np.random.randint(0,100,(24,4))
+        #d = dict(zip(subj,scores))
+        df1 = pd.DataFrame(scores,index=stud,columns=subj)
+        ic(df1)
+        df1.to_csv('./save/scores.csv', sep=',', na_rep='NaN')
 
         return None
 
@@ -219,7 +160,75 @@ class Quiz30:
 
 
 
-    def quiz34(self) -> str: return None
+    def quiz34(self) -> str:
+        '''출력했을 때 결과
+                ic| df.iloc[0]: a    36
+                                b    82
+                                c    70
+                                d     2
+                        Name: 0, dtype: int32
+                '''
+        # ic(df.iloc[[0]])
+        '''출력했을 때 결과
+        ic| df.iloc[[0]]:     a   b   c   d
+                           0  71  42  91  11
+        '''
+        # ic(df.iloc[[0,1]])
+        '''출력했을 때 결과
+        ic| df.iloc[[0,1]]:     a   b   c  d
+                             0  73  66  17  5
+                             1  73  66  17  5
+        '''
+        # ic(df.iloc[:3])
+        '''출력했을 때 결과
+        ic| df.iloc[:3]:     a   b  c   d
+                          0  20  77  0  14
+                          1  20  77  0  14
+                          2  20  77  0  14
+        '''
+        # ic(df.iloc[[True,False,True]])
+        '''출력했을 때 결과
+        ic| df.iloc[[True,False,True]]:    a   b   c   d
+                                        0  0  66  58  31
+                                        2  0  66  58  31
+        '''
+        # ic(df.iloc[lambda x: x.index % 2 == 0])
+        '''출력했을 때 결과
+        ic| df.iloc[lambda x: x.index % 2 == 0]:    a  b   c   d
+                                                 0  3  7  84  30
+                                                 2  3  7  84  30
+        '''
+        # ic(df.iloc[0, 1])
+        '''출력했을 때 결과
+        ic| df.iloc[0, 1]: 35
+        '''
+        # ic(df.iloc[[0, 2], [1, 3]])
+        '''출력했을 때 결과
+        ic| df.iloc[[0, 2], [1, 3]]:     b   d
+                                     0  27  19
+                                     2  27  19
+        '''
+        # ic(df.iloc[1:3, 0:3])
+        '''출력했을 때 결과
+        ic| df.iloc[1:3, 0:3]:     a   b   c
+                                1  60  91  19
+                                2  60  91  19
+        '''
+        # ic(df.iloc[:, [True, False, True, False]])
+        '''출력했을 때 결과
+        ic| df.iloc[:, [True, False, True, False]]:     a   c
+                                                    0  60  19
+                                                    1  60  19
+                                                    2  60  19
+        '''
+        # ic(df.iloc[:, lambda df: [0, 2]])
+        '''출력했을 때 결과
+        ic| df.iloc[:, lambda df: [0, 2]]:     a   c
+                                            0  60  19
+                                            1  60  19
+                                            2  60  19
+        '''
+        return None
 
     def quiz35(self) -> str: return None
 
