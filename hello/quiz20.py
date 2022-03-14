@@ -178,11 +178,10 @@ class Quiz20:
     '''
 
     def quiz29_pandas_df(self) -> object:
-        #d1 = {'1':[1,3,5], '2':[2,4,6]}
-        #df = pd.DataFrame(d1)
-        #df.index = [i for i in range(1,3)]
-        #alphabet_list = list(ascii_lowercase)
-        #d2 = {'1':[i for i in range(1,10,2)], '2':[i for i in range(2,11,2)]}
+        # d1 = {'1':[1,3,5], '2':[2,4,6]}
+        # df = pd.DataFrame(d1)
+        # df.index = [i for i in range(1,3)]
+        # d2 = {'1':[1,3,5], '2':[2,4,6]}
         '''d3 = {'1': [i if i%2==0 else '' for i in range(1,10)]}
         d5 = list(d3)
         d4 = {'2': [i if i%2==1 else '' for i in range(2,10)]}
@@ -194,8 +193,14 @@ class Quiz20:
         [l1.append(i) if i % 2 == 0 else l2.append(i) for i in range(1,7)]
         dict = {'1': l2, '2': l1}
         df3 = pd.DataFrame.from_dict(dict, orient='index', columns=c)
-        print(df3)
+        #print(df3)
 
+        d1 = {'1':[1,3,5]}
+        d2 = {'2':[2,4,6]}
+        d3 ={i:j for i,j in zip(d1,d2)}
+
+        df5 = pd.DataFrame.from_dict(d3,orient='index',columns=c)
+        print(df5)
 
         #df2 = pd.DataFrame.from_dict(d2, orient='index', columns=c)
         #print(df2)
