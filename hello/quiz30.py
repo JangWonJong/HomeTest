@@ -129,9 +129,21 @@ class Quiz30:
 
         #https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.loc.html
         #grade.csv
-        '''model = Model()
+        subj = ['Java', 'Python', 'JS', 'SQL']
+        stud = memberlist()
+
+        model = Model()
         grade_df = model.new_model('grade.csv')
-        ic(grade_df)'''
+        ic(grade_df)
+
+        print('Q1. 파이썬의 점수만 출력하시오')
+        python_scores = grade_df.iloc[:,1]
+        ic(python_scores)
+
+        print('Q2. 스칼라의 점수만 출력하시오')
+        s_scores = grade_df.loc[['심민혜']]
+        ic(s_scores)
+
 
         '''score = np.random.randint(0,100,(4,3))
         sub = ['a','b','c','d']
@@ -151,7 +163,14 @@ class Quiz30:
         stud = memberlist()
         scores = np.random.randint(0,100,(len(stud),len(subj)))
         df1 = pd.DataFrame(scores,index=stud,columns=subj)
-        ic(df1)
+        #ic(df1)
+        '''print('Q1. 파이썬의 점수만 출력하시오')
+        python_scores = df1.iloc[:,1]
+        ic(python_scores)
+
+        print('Q2. 스칼라의 점수만 출력하시오')
+        s_scores = df1.loc[['심민혜']]
+        ic(s_scores)'''
         df1.to_csv('./save/scores.csv', sep=',', na_rep='NaN')
 
         '''d = dict(zip(stud,scores))

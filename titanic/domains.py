@@ -4,17 +4,22 @@ from dataclasses import dataclass
 
 @dataclass
 class Dataset:
-    context : str
+    dname : str
+    sname : str
     fname : str
     train : str
     test : str
     id : str
     label : str
-    @property
-    def context(self) -> str : return self._context
-    @context.setter
-    def context(self, context) : self._context = context
 
+    @property
+    def dname(self)->str:return self.dname
+    @dname.setter
+    def dname(self, dname): self._dname = dname
+    @property
+    def sname(self)->str :return self.sname
+    @sname.setter
+    def sname(self,sname): self._sname = sname
     @property
     def fname(self) -> str: return self._fname
 
