@@ -154,9 +154,9 @@ class Quiz30:
         ic(df1)
         df1.to_csv('./save/scores.csv', sep=',', na_rep='NaN')
 
-        d = dict(zip(stud,scores))
+        '''d = dict(zip(stud,scores))
         df2 = pd.DataFrame.from_dict(d,orient='index',columns=subj)
-        ic(df2)
+        ic(df2)'''
         return None
 
 
