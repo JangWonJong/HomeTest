@@ -7,4 +7,4 @@ class TitanicTemplate(object):
     def __init__(self):
         self.model = Model()
         self.dataset = Dataset()
-        self.titanic = TitanicModel()
+        self.titanic = TitanicModel('train.csv','test.csv')

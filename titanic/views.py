@@ -9,11 +9,3 @@ class TitanicView:
     def modeling(self, train, test):
         model = self.model
 
-    def preprocess(self, train, test) -> object:
-        model = self.model
-        this = self.dataset
-        this.train = model.new_model(train)
-        this.test = model.new_model(test)
-        # id 추출
-        ic(f'트레인 컬럼 {this.train.columns}')
-        ic(f'트레인 헤드 {this.train.head()}')
