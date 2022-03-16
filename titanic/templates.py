@@ -7,7 +7,7 @@ import matplotlib.pyplot as plt
 데이터 시각화
 엔티티(개체)를 차트로 표현하는 것
 
-모든 feature를 다 그려야 하지만, 시간 관게상
+모든 feature를 다 그려야 하지만, 시간 관계상
 survived, pclass, sex, embarked의 4개만 그리겠습니다.
 템플릿 메소드 패턴으로 구성하시오
 '''
@@ -17,34 +17,30 @@ class TitanicTemplate(object):
 
     def __init__(self,fname):
         self.entity = self.model.new_model(fname)
-        self.titanic = TitanicModel('train.csv','test.csv')
-
-    def draw_survied_dead(self):
         this = self.entity
-        self.survived()
-        self.pclass()
-        self.sex()
-        self.embarked()
-        ic(f'트레인의 타입 : {type(this.train)}')
-        ic(f'트레인의 컬럼 : {this.train}')
-        ic(f'트레인의 상위5행 : {this.train}')
-        ic(f'트레인의 하위5행 : {this.train}')
-        f, ax = plt.subplots(1,2, figsize=(18, 8))
+        ic(f'트레인의 타입 : {type(this)}')
+        ic(f'트레인의 컬럼 : {this.columns}')
+        ic(f'트레인의 상위5행 : {this.head()}')
+        ic(f'트레인의 하위5행 : {this.tail()}')
+
+    def draw_visualize(self)->None:
+        this = self.entity
+        self.draw_survived(this)
+        self.draw_pclass(this)
+        self.draw_sex(this)
+        self.draw_embarked(this)
+
+    @staticmethod
+    def draw_survived(this)->None:
+        f, ax = plt.subplots(1, 2, figsize=(18, 8))
         this['Survived']
         plt.show()
-
     @staticmethod
-    def survived():
-        pass
-
+    def draw_pclass(this)->None:
+        plt.show()
     @staticmethod
-    def pclass():
-        pass
-
+    def draw_sex(this)->None:
+        plt.show()
     @staticmethod
-    def sex():
-        pass
-
-    @staticmethod
-    def embarked():
-        pass
+    def draw_embarked(this)->None:
+        plt.show()
