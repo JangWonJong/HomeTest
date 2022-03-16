@@ -14,5 +14,5 @@ if __name__ == '__main__':
 
         elif menu == '2':
             print('#### 2. 템플릿 ####')
-            template = TitanicTemplate()
+            template = TitanicTemplate(fname='train.csv')
             break

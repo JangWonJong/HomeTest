@@ -14,49 +14,88 @@ class TitanicModel(object):
         ic(self.train)
 
     def preprocess(self):
-        self.sibsp_garbage()
-        self.parch_garbage()
-        self.ticket_garbage()
-        self.cabin_garbage()
-        self.name_nominal()
-        self.embark_nominal()
-        self.pclass_nominal()
-        self.sex_nominal()
-        self.age_ratio()
-        self.fare_ratio()
-        self.create_train()
-        self.create_label()
+        df = self.train
+        df = self.drop_feature(df)
+        df = self.name_nominal(df)
+        df = self.embark_nominal(df)
+        df = self.pclass_nominal(df)
+        df = self.sex_nominal(df)
+        df = self.age_ratio(df)
+        df = self.fare_ratio(df)
+        df = self.create_train(df)
+        df = self.create_label(df)
+        return df
 
+    def drop_feature(self,df)->object:#필요없는 feature들을 날림 garbage제거
 
-    def create_label(self)->object:
-        pass
+        self.cabin_garbage(df)
+        self.ticket_garbage(df)
+        self.parch_garbage(df)
+        self.sibsp_garbage(df)
+        return df
 
-    def create_train(self)->object:
-        pass
-    def drop_feature(self)->object:#필요없는 feature들을 날림 garbage제거ㅏ
-        pass
+    @staticmethod
+    def create_label(df)->object:
+
+        return df
+
+    @staticmethod
+    def create_train(df)->object:
+
+        return df
+
     '''
     Categorical vs Quantitative
     Cate -> nominal(이름) vs ordinal(순서)
     Qaun -> interval(상대) vs ratio(절대)
     '''
-    def pclass_nominal(self)->object:
-        pass
-    def name_nominal(self) -> object:#name에서 추출할 것이 있음
-        pass
-    def sex_nominal(self)-> object:
-        pass
-    def age_ratio(self)-> object:
-        pass
-    def sibsp_garbage(self)-> object:
-        pass
-    def parch_garbage(self)-> object:
-        pass
-    def ticket_garbage(self)-> object:
-        pass
-    def fare_ratio(self)-> object:
-        pass
-    def cabin_garbage(self)-> object:
-        pass
-    def embark_nominal(self)-> object:
-        pass
+
+    @staticmethod
+    def pclass_nominal(df)->object:
+
+        return df
+
+    @staticmethod
+    def name_nominal(df) -> object:#name에서 추출할 것이 있음
+
+        return df
+
+    @staticmethod
+    def sex_nominal(df)-> object:
+
+        return df
+
+    @staticmethod
+    def age_ratio(df)-> object:
+
+        return df
+
+    @staticmethod
+    def sibsp_garbage(df)-> object:
+
+        return df
+
+    @staticmethod
+    def parch_garbage(df)-> object:
+
+        return df
+
+    @staticmethod
+    def ticket_garbage(df)-> object:
+
+        return df
+
+    @staticmethod
+    def fare_ratio(df)-> object:
+
+        return df
+
+    @staticmethod
+    def cabin_garbage(df)-> object:
+
+        return df
+
+    @staticmethod
+    def embark_nominal(df)-> object:
+
+        return df
