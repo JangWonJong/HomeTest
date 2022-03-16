@@ -30,6 +30,7 @@ class TitanicTemplate(object):
         self.draw_sex(this)
         self.draw_embarked(this)
 
+
     @staticmethod
     def draw_survived(this)->None:
         f, ax = plt.subplots(1, 2, figsize=(18, 8))
@@ -37,10 +38,16 @@ class TitanicTemplate(object):
         plt.show()
     @staticmethod
     def draw_pclass(this)->None:
+        '''f, ax = plt.subplots(1, 2, figsize=(18, 8))
+                this['pclass']'''
         plt.show()
     @staticmethod
     def draw_sex(this)->None:
+        '''f, ax = plt.subplots(1, 2, figsize=(18, 8))
+                this['sex']'''
         plt.show()
     @staticmethod
     def draw_embarked(this)->None:
+        '''f, ax = plt.subplots(1, 2, figsize=(18, 8))
+                this['embarked']'''
         plt.show()

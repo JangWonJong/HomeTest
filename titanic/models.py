@@ -10,13 +10,12 @@ class TitanicModel(object):
         self.train = self.model.new_model(train_fname)
         self.test = self.model.new_model(test_fname)
         # id 추출
-
+        ic(f'트레인 컬럼 {self.train.columns}')
+        ic(f'트레인 헤드 {self.train.head()}')
+        ic(self.train)
 
     def preprocess(self):
         df = self.train
-        ic(f'트레인 컬럼 {self.df.columns}')
-        ic(f'트레인 헤드 {self.df.head()}')
-        ic(self.train)
         df = self.drop_feature(df)
         df = self.name_nominal(df)
         df = self.embark_nominal(df)
@@ -29,7 +28,6 @@ class TitanicModel(object):
         return df
 
     def drop_feature(self,df)->object:#필요없는 feature들을 날림 garbage제거
-
 
         '''self.cabin_garbage(df)
         self.ticket_garbage(df)
@@ -66,6 +64,9 @@ class TitanicModel(object):
     @staticmethod
     def sex_nominal(df)-> object:
 
+        return df
+    @staticmethod
+    def age_ratio(df)->object:
         return df
 
     @staticmethod
