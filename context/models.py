@@ -13,6 +13,12 @@ class Model:
     def get_sname(self):
         return self.ds.sname
 
+    def new_dframe(self, fname) -> object:
+        this = self.ds
+        # pd.read_csv('경로/파일명.csv', index_col = '인덱스로 지정할 column명') Index 지정하지 않음
+        return pd.read_csv(f'{this.dname}{fname}')
+
+
     def new_model(self, fname) -> object:
         this = self.ds
         # index_col=0 해야 기존 index 값이 유지된다
