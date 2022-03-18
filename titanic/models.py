@@ -10,17 +10,19 @@ class TitanicModel(object):
     def preprocess(self,train_fname,test_fname):
         this = self.dataset
         that = self.model
+        feature = ['PassengerId','Survived','Pclass','Name','Sex','Age','SibSp','Parch','Ticket','Fare','Cabin','Embarked']
         this.train = that.new_dframe(train_fname)
         this.test = that.new_dframe(test_fname)
         # id 추출
-        this.id = this.test['PassengerId']
-        this.label = this.train['Survived']
-        this.train = this.train.drop('Survived', axis=1)
-        this = self.drop_feature(this,'Cabin','Ticket','Parch','SibSp')
+        this.id = this.test[feature[0]]
+        this.label = this.train[feature[1]]
+        this.train = this.train.drop(feature[1], axis=1)
+        this = self.drop_feature(this,feature[11],feature[9],feature[8],feature[7])
+        #self.kwargs_sample( name= '이순신, ddd, qqq') kwargs 샘플
+        this = self.name_nominal(this)
 
         '''
         this = self.create_this(self.dataset)
-        this = self.name_nominal(this)
         this = self.embark_nominal(this)
         this = self.pclass_nominal(this)
         this = self.sex_nominal(this)
@@ -56,9 +58,16 @@ class TitanicModel(object):
 
     @staticmethod
     def drop_feature(this,*feature)->object:#필요없는 feature들을 날림 garbage제거
-        for i in feature:
+        '''for i in feature:
             this.train = this.train.drop(i,axis =1)
-            this.test = this.test.drop(i, axis=1)
+            this.train.drop(i,axis =1, inplace=True)
+            this.test = this.test.drop(i, axis=1)'''
+
+        '''for i in [this.train,this.test]:
+            for j in feature:
+                i.drop(j, axis=1, inplace=True)'''
+
+        [i.drop(j, axis=1, inplace=True) for j in feature for i in [this.train,this.test]]
 
         '''self.cabin_garbage(df)
         self.ticket_garbage(df)
@@ -66,6 +75,10 @@ class TitanicModel(object):
         self.sibsp_garbage(df)'''
         return this
 
+    @staticmethod
+    def kwargs_sample( **kwargs)->None:
+        print(type(kwargs))
+        {print([''.join(f'key:{i},val:{j}') for i,j in kwargs.items()])}
 
 
     @staticmethod
@@ -86,6 +99,10 @@ class TitanicModel(object):
 
     @staticmethod
     def name_nominal(this) -> object:#name에서 추출할 것이 있음
+        combine = [this.train, this.test]#dataset의 train과 test를 편집하기위해 list에 받는다
+        for dataset in combine:
+            dataset['Title'] = dataset.Name.str.extract('([A-Za-z]+)\.',expand=False)
+            ic(dataset['Title'])
 
         return this
 
