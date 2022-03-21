@@ -11,8 +11,7 @@ class TitanicModel(object):
     model = Model()
     dataset = Dataset()
 
-
-    def preprocess(self,train_fname,test_fname):
+    def preprocess(self,train_fname,test_fname):#hook
         this = self.dataset
         that = self.model
         feature = ['PassengerId','Survived','Pclass','Name','Sex','Age','SibSp','Parch','Ticket','Fare','Cabin','Embarked']
@@ -37,14 +36,26 @@ class TitanicModel(object):
         this = self.pclass_ordinal(this)
         this = self.fare_ratio(this)
         this = self.drop_feature(this,'Fare')
-
-        '''
-        this = self.create_this(self.dataset)
-        this = self.pclass_nominal(this)
-        this = self.create_train(this)'''
-
-        self.df_info(this)
+        k_fold = self.create_k_fold()
+        accuracy = self.get_accuracy(this, k_fold)
+        ic(accuracy)
+        #self.df_info(this)
         return this
+
+    def learning(self,train_fname,test_fname):#hook
+        this = self.preprocess(train_fname,test_fname)
+        k_fold = self.create_k_fold()
+        ic(f'사이킷런 알고리즘 정확도 : {self.get_accuracy(this, k_fold)}')
+        self.submit(this)
+        return
+
+    @staticmethod
+    def submit(this):
+        clf =RandomForestClassifier()
+        clf.fit(this.train, this.test)
+        prediction = clf.predict(this.test)
+        pd.DataFrame({'PassengerId':this.id, 'Survived':prediction}).to_csv('./save/submission.csv', index=False)
+
 
     @staticmethod
     def df_info(this):
@@ -152,7 +163,7 @@ class TitanicModel(object):
         for these in [this.train, this.test]:
             a += list(set(these['Title']))
         a = list(set(a))
-        print(f'>>>>{a}')
+        #print(f'>>>>{a}')
         '''
         ['Mr', 'Sir', 'Major', 'Don', 'Rev', 'Countess', 'Lady', 'Jonkheer', 'Dr',
         'Miss', 'Col', 'Ms', 'Dona', 'Mlle', 'Mme', 'Mrs', 'Master', 'Capt']
@@ -228,7 +239,7 @@ class TitanicModel(object):
         fare_mapping = {1,2,3,4}
         for these in [this.train, this.test]:
             these['FareBand'] = these['Fare'].fillna(1)
-            these['FareBand'] = pd.cut(these['FareBand'],bins,labels=labels)
+            these['FareBand'] = pd.qcut(these['FareBand'],4,fare_mapping)
 
             '''these['FareBand'] = pd.cut(these['Fare'], bins, right=False, labels=labels)
             these['FareBand'] = these['FareBand'].map(fare_mapping)'''
@@ -238,7 +249,13 @@ class TitanicModel(object):
         return this
 
     @staticmethod
-    def cabin_garbage(this)-> object:
+    def create_k_fold()-> object:
+        return KFold(n_splits=10, shuffle=True, random_state=0)
 
-        return this
+    @staticmethod
+    def get_accuracy(this, k_fold):
+        score = cross_val_score(RandomForestClassifier(), this.train, this.label,
+                                cv = k_fold, n_jobs = 1, scoring='accuracy')
+
+        return round(np.mean(score)*100, 2)
 
