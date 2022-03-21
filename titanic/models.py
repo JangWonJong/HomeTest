@@ -215,10 +215,16 @@ class TitanicModel(object):
 
     @staticmethod
     def fare_ratio(this)-> object:
-        #
-        this.test['Fare'] = this.test['Fare'].fillna(1)
-        this.train['FareBand'] = pd.qcut(this.train['Fare'], 4)
 
+        '''this.test['Fare'] = this.test['Fare'].fillna(1)
+        this.train['FareBand'] = pd.qcut(this.train['Fare'], 4)'''
+        this.test['Fare'] = this.test['Fare'].fillna(1)
+        # this.train['FareBand'] = pd.qcut(this.train['Fare'], 4)
+        # print(f'qcut 으로 bins 값 설정 {this.train["FareBand"].head()}')
+        bins = [-1, 8, 15, 31, np.inf]
+        labels = [0, 1, 2, 3]
+        for these in [this.train, this.test]:
+            these['Fare'] = pd.cut(these['Fare'], bins, right=False, labels=labels)
 
         # print(f'qcut 으로 bins 값 설정 {this.train["FareBand"].head()}')
         #bins = [-1, 8, 15, 31, np.inf]
