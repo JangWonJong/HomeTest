@@ -3,6 +3,9 @@ import pandas as pd
 from icecream import ic
 from context.domains import Dataset
 from context.models import Model
+from sklearn.model_selection import KFold
+from sklearn.model_selection import cross_val_score
+from sklearn.ensemble import RandomForestClassifier
 
 class TitanicModel(object):
     model = Model()
@@ -31,7 +34,9 @@ class TitanicModel(object):
         #this = self.name_nominal(this)
         this = self.age_ratio(this)
         this = self.drop_feature(this,'Age')
+        this = self.pclass_ordinal(this)
         this = self.fare_ratio(this)
+        this = self.drop_feature(this,'Fare')
 
         '''
         this = self.create_this(self.dataset)
@@ -44,8 +49,8 @@ class TitanicModel(object):
     @staticmethod
     def df_info(this):
         [print(f'{i.info()}') for i in [this.train, this.test]]
-        ic(this.train.head(3))
-        ic(this.test.head(3))
+        ic(this.train.head(5))
+        ic(this.test.head(5))
 
     @staticmethod
     def null_check(this):
@@ -54,7 +59,7 @@ class TitanicModel(object):
     @staticmethod
     def id_info(this):
         ic(f'id의 타입 {type(this.id)}')
-        ic(f'id의 상위3개 {this.id[:3]}')
+        ic(f'id의 상위3개 {this.id[:5]}')
 
 
     '''@staticmethod
@@ -121,7 +126,7 @@ class TitanicModel(object):
     '''
 
     @staticmethod
-    def pclass_nominal(this)->object:
+    def pclass_ordinal(this)->object:
 
         return this
 
@@ -219,10 +224,14 @@ class TitanicModel(object):
         this.test['Fare'] = this.test['Fare'].fillna(1)
         # this.train['FareBand'] = pd.qcut(this.train['Fare'], 4)
         bins = [-1, 8, 15, 31, np.inf]
-        labels = [0, 1, 2, 3]
+        labels = [1, 2, 3, 4]
+        fare_mapping = {1,2,3,4}
         for these in [this.train, this.test]:
-            these['Fare'] = pd.cut(these['Fare'], bins, right=False, labels=labels)
+            these['FareBand'] = these['Fare'].fillna(1)
+            these['FareBand'] = pd.cut(these['FareBand'],bins,labels=labels)
 
+            '''these['FareBand'] = pd.cut(these['Fare'], bins, right=False, labels=labels)
+            these['FareBand'] = these['FareBand'].map(fare_mapping)'''
         # print(f'qcut 으로 bins 값 설정 {this.train["FareBand"].head()}')
         #bins = [-1, 8, 15, 31, np.inf]
 
