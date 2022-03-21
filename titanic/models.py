@@ -31,13 +31,11 @@ class TitanicModel(object):
         #this = self.name_nominal(this)
         this = self.age_ratio(this)
         this = self.drop_feature(this,'Age')
+        this = self.fare_ratio(this)
 
         '''
         this = self.create_this(self.dataset)
         this = self.pclass_nominal(this)
-        this = self.sex_nominal(this)
-        this = self.age_ratio(this)
-        this = self.fare_ratio(this)
         this = self.create_train(this)'''
 
         self.df_info(this)
@@ -189,7 +187,7 @@ class TitanicModel(object):
     def embark_nominal(this) -> object:
         embarked_mapping = {'S': 1, 'C': 2, 'Q': 3}
 
-        this.train = this.train.fillna({'Embarked':'S'})
+        this.train = this.train.fillna({'Embarked':'S'}) #S가 분포가 가장 많기 때문에 빈곳을 S로 채움
         '''this.train = this.train.fillna({'Embarked':'C'})
         this.train = this.train.fillna({'Embarked':'Q'})'''
 
@@ -206,7 +204,7 @@ class TitanicModel(object):
         train['Age'] = train['Age'].fillna(-0.5)
         test['Age'] = test['Age'].fillna(-0.5)
         bins = [-1, 0, 5, 12, 18, 24, 35, 60, np.inf]
-        labels = ['Unknown', 'Baby', 'Child', 'Teenager', 'Student', 'Young Adult', 'Adult', 'Senior'] #죽은사람은 빠짐
+        labels = ['Unknown', 'Baby', 'Child', 'Teenager', 'Student', 'Young Adult', 'Adult', 'Senior'] 
         for these in train, test:
             # pd.cut() 을 사용하시오. 다른 곳은 고치지 말고 다음 두 줄만 코딩하시오
             these['AgeGroup'] = pd.cut(these['Age'],bins,labels=labels)# pd.cut() 을 사용
@@ -220,7 +218,6 @@ class TitanicModel(object):
         this.train['FareBand'] = pd.qcut(this.train['Fare'], 4)'''
         this.test['Fare'] = this.test['Fare'].fillna(1)
         # this.train['FareBand'] = pd.qcut(this.train['Fare'], 4)
-        # print(f'qcut 으로 bins 값 설정 {this.train["FareBand"].head()}')
         bins = [-1, 8, 15, 31, np.inf]
         labels = [0, 1, 2, 3]
         for these in [this.train, this.test]:
